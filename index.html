@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>釜山五天四夜：高齡友善客製化家族之旅 SPA</title>
+  <title>釜山五天四夜：高齡友善客製化家族之旅 SPA (秋季暖色版)</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-    body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
+    body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; background-color: #faf8f5; }
     .hide { display: none !important; }
     
-    /* 自訂長輩友善捲軸 */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    ::-webkit-scrollbar-track { background: #f5f0eb; }
+    ::-webkit-scrollbar-thumb { background: #d6c7b2; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #b8a388; }
     
-    /* 導覽列與標籤作用中樣式 */
-    .nav-active { border-bottom-width: 4px; border-color: #0f766e; color: #0f766e; font-weight: 700; }
-    .tab-active { background-color: #0f766e; color: white; border-color: #0f766e; }
+    .nav-active { border-bottom-width: 4px; border-color: #92400e; color: #78350f; font-weight: 700; }
+    .tab-active { background-color: #92400e; color: white; border-color: #92400e; }
     
-    /* 圖表容器規範 */
     .chart-container {
       position: relative;
       width: 100%;
@@ -36,62 +33,67 @@
     @media (min-width: 768px) {
       .chart-container { height: 320px; }
     }
+
+    .checklist-item input:checked + span {
+      text-decoration: line-through;
+      color: #a89a8b;
+    }
   </style>
 </head>
-<body class="text-slate-800 bg-slate-50 antialiased">
+<body class="text-stone-800 bg-[#faf8f5] antialiased">
 
-  <!-- Chosen Palette: Warm Sand & Serene Teal -->
+  <!-- Chosen Palette: Autumn Maple & Warm Amber (秋季楓葉與暖琥珀色調) -->
   <!-- Application Structure Plan: 
-       1. 頂部導覽列 (Header & Nav Hub): 提供跨區塊切換（總覽、交通住宿、每日行程、美食地圖、行前準備），包含行動端下拉選單。
-       2. 行程總覽與戰略分析 (Overview Section): 說明專案背景與高齡友善設計準則，整合 Chart.js 預算圓餅圖與交通時間效益對比圖。
-       3. 交通與住宿樞紐 (Transport & Stay Hub): 整合長榮航空班機、台灣高鐵624車次、9人座專車接送與 Centum Premier Hotel 地理優勢，附帶 Google Maps 導航。
-       4. 互動時間軸行程 (Timeline Section): 支援按天數 (Day 1 - Day 5) 進行分頁切換，呈現點對點動線、預估時間、重力順向策略、Under Coffee歇腳點，以及 9/11 晚餐爸爸請客頂級韓牛（海雲台/廣安里/南浦洞/西面跨區可預約名店與動線）。
-       5. 長輩友善美食地圖 (Food Map Section): 精選頂級韓牛(Woo Tender/초원농원/嶺南食肉/부산갈비)、專人燒肉(Gohasun/Red Pig)、在地溫補湯品、鮮甜海味與質感咖啡（Under Coffee、MOMOS、Good Ol' Days），附設一鍵分類篩選器。
-       6. 行前整備與退稅指南 (Prep & Tax Refund Section): 提供 2024 最新韓國退稅規定、市區即時退稅與金海機場退稅 3 步驟、CatchTable/NAVER 韓牛訂位技巧、WOWPASS/Naver Map 工具教學及 9 月穿搭保健指南。
+       1. Header & Nav Hub: 跨區塊分頁（總覽、交通住宿、每日行程、美食地圖、行前準備），包含行動端下拉選單。整體採用秋季楓木色與溫暖大地色系。
+       2. 行程總覽與戰略分析: 高齡友善設計準則，Chart.js 預算圓餅圖與交通時間效益對比圖，配色融入赤陶土與深楓紅。
+       3. 交通與住宿樞紐: 長榮班機 BR164/BR1193、高鐵 624 車次、9人座專車接送與 Centum Premier Hotel 地理優勢，附帶 Google Maps 導航。
+       4. 互動時間軸行程: 按天數 (Day 1 - Day 5) 分頁切換，重力順向動線、Under Coffee 歇腳點，以及 9/11 爸爸請客確定餐廳【熟成島 廣安里店 Sukseongdo】。
+       5. 長輩友善美食地圖: 頂級燒肉/熟成豬肉(熟成島 廣安里店/Gohasun/Red Pig/Woo Tender)、在地溫補湯品、鮮甜海味與質感咖啡（Under Coffee、MOMOS、Good Ol' Days），附一鍵分類篩選器。
+       6. 行前整備與精準互動打包清單: 最新韓國退稅規定、市區即時退稅與金海機場退稅 3 步驟、 CatchTable/NAVER 訂位候位技巧，以及使用者最新指定之「隨身行李」與「託運行李」動態打包清單。
   -->
   <!-- Visualization & Content Choices: 
-       - 預算分配圖: Goal = 展示 30,000 TWD/人 (不含機票) 資金流向 -> Doughnut Chart (Chart.js) -> Canvas 渲染。
-       - 交通時間效益比較圖: Goal = 對比計程車/專車 vs 大眾運輸步行時間 -> Grouped Bar Chart (Chart.js) -> 展示專車對長輩體力節省 50% 以上之效益。
-       - 每日時間軸: Goal = 展示時序與地理轉換 -> HTML/Tailwind Timeline Grid -> 按鍵切換 JS -> 隨附可點擊之 Google Maps 與 CatchTable/NAVER 連結。
-       - 美食地圖: Goal = 方便快速篩選長輩接受度高之餐點 -> CSS Grid + JS Filter -> 動態顯隱卡片。
+       - 預算分配圖: Goal = 展示 30,000 TWD/人 (不含機票) 資金流向 -> Doughnut Chart (Chart.js) -> Autumn Tones Canvas 渲染。
+       - 交通時間效益比較圖: Goal = 對比計程車/專車 vs 大眾運輸步行時間 -> Grouped Bar Chart (Chart.js)。
+       - 每日時間軸: Goal = 展示時序與地理轉換 -> HTML/Tailwind Timeline Grid -> 按鍵切換 JS -> 隨附 Google Maps / CatchTable / NAVER 連結。
+       - 行李打包清單: Goal = 方便隨時比對出國用品攜帶狀況 -> Dynamic JS Checkbox List + Dynamic JS Progress Bar -> 即時計算完成度。
   -->
   <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
   <!-- 頂部導覽列樞紐 -->
-  <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-50 border-b border-slate-100">
+  <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-50 border-b border-stone-200/70">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="switchView('overview')">
-          <span class="text-2xl">✈️</span>
+          <span class="text-2xl">🍁</span>
           <div>
-            <span class="font-black text-xl text-teal-800 tracking-tight">釜山高齡友善指南</span>
-            <span class="text-xs text-teal-600 block -mt-1 font-medium">9/8 - 9/12 家族旅遊 SPA</span>
+            <span class="font-black text-xl text-amber-950 tracking-tight">釜山高齡友善指南</span>
+            <span class="text-xs text-amber-800 block -mt-1 font-medium">9/8 - 9/12 秋季家族之旅 SPA</span>
           </div>
         </div>
         <!-- 桌面版導覽 -->
         <nav class="hidden md:flex space-x-6 h-full">
           <button class="nav-btn nav-active inline-flex items-center px-1 pt-1 text-sm font-bold transition-colors" data-target="overview">📊 行程總覽</button>
-          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-500 hover:text-teal-700 transition-colors" data-target="transport">🏨 交通住宿</button>
-          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-500 hover:text-teal-700 transition-colors" data-target="timeline">📅 每日行程</button>
-          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-500 hover:text-teal-700 transition-colors" data-target="food">🥩 美食地圖</button>
-          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-slate-500 hover:text-teal-700 transition-colors" data-target="prep">💼 行前準備</button>
+          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-stone-500 hover:text-amber-800 transition-colors" data-target="transport">🏨 交通住宿</button>
+          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-stone-500 hover:text-amber-800 transition-colors" data-target="timeline">📅 每日行程</button>
+          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-stone-500 hover:text-amber-800 transition-colors" data-target="food">🥩 美食地圖</button>
+          <button class="nav-btn inline-flex items-center px-1 pt-1 text-sm font-bold text-stone-500 hover:text-amber-800 transition-colors" data-target="prep">💼 行前與打包</button>
         </nav>
         <!-- 手機版選單觸發器 -->
         <div class="md:hidden flex items-center">
-          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-teal-800 hover:bg-slate-100 focus:outline-none transition-colors">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-stone-600 hover:text-amber-800 hover:bg-stone-100 focus:outline-none transition-colors">
             <span class="text-2xl">☰</span>
           </button>
         </div>
       </div>
     </div>
     <!-- 手機版下拉選單 -->
-    <div class="md:hidden hide bg-white border-b border-slate-200 shadow-xl absolute w-full left-0 top-16" id="mobile-menu">
+    <div class="md:hidden hide bg-white border-b border-stone-200 shadow-xl absolute w-full left-0 top-16" id="mobile-menu">
       <div class="pt-2 pb-4 space-y-1 px-4">
-        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-teal-600 text-teal-800 font-bold text-base bg-teal-50" data-target="overview">📊 行程總覽</button>
-        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-slate-600 font-bold text-base hover:bg-slate-50" data-target="transport">🏨 交通住宿</button>
-        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-slate-600 font-bold text-base hover:bg-slate-50" data-target="timeline">📅 每日行程</button>
-        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-slate-600 font-bold text-base hover:bg-slate-50" data-target="food">🥩 美食地圖</button>
-        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-slate-600 font-bold text-base hover:bg-slate-50" data-target="prep">💼 行前準備</button>
+        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-amber-800 text-amber-950 font-bold text-base bg-amber-50" data-target="overview">📊 行程總覽</button>
+        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-stone-600 font-bold text-base hover:bg-stone-50" data-target="transport">🏨 交通住宿</button>
+        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-stone-600 font-bold text-base hover:bg-stone-50" data-target="timeline">📅 每日行程</button>
+        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-stone-600 font-bold text-base hover:bg-stone-50" data-target="food">🥩 美食地圖</button>
+        <button class="mob-nav-btn block w-full text-left py-3 px-4 rounded-xl border-l-4 border-transparent text-stone-600 font-bold text-base hover:bg-stone-50" data-target="prep">💼 行前與打包</button>
       </div>
     </div>
   </header>
@@ -101,72 +103,72 @@
     
     <!-- 模組 1: 行程總覽與戰略分析 -->
     <section id="overview" class="view-section">
-      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80 mb-8">
+      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80 mb-8">
         <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div>
-            <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full uppercase tracking-wider">Custom Travel Plan</span>
-            <h1 class="text-3xl sm:text-4xl font-black text-slate-900 mt-2 tracking-tight">釜山五天四夜：長輩友善客製之旅</h1>
+            <span class="text-xs font-bold text-amber-800 bg-amber-100/70 px-3 py-1 rounded-full uppercase tracking-wider">Autumn Travel Plan</span>
+            <h1 class="text-3xl sm:text-4xl font-black text-stone-900 mt-2 tracking-tight">釜山五天四夜：長輩友善客製之旅</h1>
           </div>
           <div class="flex flex-wrap gap-2 text-sm">
-            <span class="bg-teal-100 text-teal-800 px-3 py-1.5 rounded-xl font-bold">🗓️ 9/8 ~ 9/12</span>
-            <span class="bg-indigo-100 text-indigo-800 px-3 py-1.5 rounded-xl font-bold">👥 3人同行 (含雙親)</span>
-            <span class="bg-amber-100 text-amber-800 px-3 py-1.5 rounded-xl font-bold">💰 預算 30,000 TWD/人 (不含機票)</span>
+            <span class="bg-amber-100/80 text-amber-900 px-3 py-1.5 rounded-xl font-bold">🗓️ 9/8 ~ 9/12</span>
+            <span class="bg-orange-100/80 text-orange-950 px-3 py-1.5 rounded-xl font-bold">👥 3人同行 (含雙親)</span>
+            <span class="bg-stone-200/80 text-stone-900 px-3 py-1.5 rounded-xl font-bold">💰 預算 30,000 TWD/人 (不含機票)</span>
           </div>
         </div>
-        <p class="text-slate-600 leading-relaxed text-base">
-          本行程專為帶著長輩同行的三人家口旅遊所量身打造。考量釜山地勢起伏顯著，設計核心聚焦於「低體力消耗」、「重力順向動線」與「極致舒適度」。透過機場專車接送、平地室內展演（全新 ARTE MUSEUM）、質感咖啡歇腳點（Under Coffee, MOMOS）、老字號溫補湯品與特別規劃的 **9/11 爸爸請客頂級 1++ 韓牛奢華晚宴 (Woo Tender / 초원농원 / 嶺南食肉食堂 / 부산갈비)**，確保長輩能在無壓力、無負擔的步調下，深度的體驗釜山的山海美景與頂級美食饗宴。
+        <p class="text-stone-600 leading-relaxed text-base">
+          本行程專為帶著長輩同行的三人家口初秋旅遊量身打造。考量釜山地形起伏，設計核心聚焦於「低體力消耗」、「重力順向動線」與「極致舒適度」。透過機場專車接送、平地室內展演（全新 ARTE MUSEUM）、質感咖啡歇腳點（Under Coffee, MOMOS）、老字號溫補湯品與特別確定的 **9/11 爸爸請客頂級熟成黑豬肉饗宴【熟成島 廣安里店 (숙성도)】**，確保長輩能在無壓力、無負擔的步調下，深度的體驗釜山的山海美景與頂級美食饗宴。
         </p>
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <!-- Chart 1: 預算分析 -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80">
           <div class="mb-4">
-            <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span>📊</span> 每人三萬台幣預算分配</h3>
-            <p class="text-xs text-slate-500 mt-1">排除機票費用，資金優先投注於高質感餐飲（含 9/11 頂級韓牛）與舒適包車接送。</p>
+            <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2"><span>📊</span> 每人三萬台幣預算分配</h3>
+            <p class="text-xs text-stone-500 mt-1">排除機票費用，資金優先投注於高質感餐飲（含 9/11 熟成島晚宴）與舒適包車接送。</p>
           </div>
           <div class="chart-container">
             <canvas id="budgetChart"></canvas>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
+          <div class="mt-4 pt-4 border-t border-stone-100 text-center text-xs text-stone-500">
             以 3 人規模計算，預留充裕預備金因應現場臨時彈性支出。
           </div>
         </div>
 
         <!-- Chart 2: 交通時間與體力效益 -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80">
           <div class="mb-4">
-            <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2"><span>⏱️</span> 專車/計程車 vs 大眾運輸時間比較</h3>
-            <p class="text-xs text-slate-500 mt-1">針對長途與山坡路段，點對點接送可替長輩省下高達 50% 以上的時間與體力。</p>
+            <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2"><span>⏱️</span> 專車/計程車 vs 大眾運輸時間比較</h3>
+            <p class="text-xs text-stone-500 mt-1">針對長途與山坡路段，點對點接送可替長輩省下高達 50% 以上的時間與體力。</p>
           </div>
           <div class="chart-container">
             <canvas id="transportChart"></canvas>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
+          <div class="mt-4 pt-4 border-t border-stone-100 text-center text-xs text-stone-500">
             三人分攤計程車與專車費用極具經濟效益，大幅減少長輩地鐵轉乘步行疲勞。
           </div>
         </div>
       </div>
       
       <!-- 戰略重點 -->
-      <div class="bg-gradient-to-br from-teal-800 to-emerald-900 p-6 md:p-8 rounded-3xl text-white shadow-lg">
+      <div class="bg-gradient-to-br from-amber-950 via-stone-900 to-amber-900 p-6 md:p-8 rounded-3xl text-white shadow-lg">
         <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><span>💡</span> 高齡友善 4 大設計戰略</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-teal-50">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-amber-50">
           <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
             <div class="text-2xl mb-2">🏔️ 重力順向動線</div>
-            <p class="text-sm text-teal-100 leading-relaxed">甘川文化村安排計程車直達頂部，採「由上往下」漫步；龍頭山公園善用光復路戶外免費電扶梯，徹底避免仰攻爬坡。</p>
+            <p class="text-sm text-amber-100/90 leading-relaxed">甘川文化村安排計程車直達頂部，採「由上往下」漫步；龍頭山公園善用光復路戶外免費電扶梯，徹底避免仰攻爬坡。</p>
           </div>
           <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
-            <div class="text-2xl mb-2">🥩 9/11 爸爸請客頂級韓牛</div>
-            <p class="text-sm text-teal-100 leading-relaxed">安排跨區頂級韓牛（海雲台 Woo Tender、南浦洞 초원농원 / 부산갈비、西面/釜田 嶺南食肉食堂），可透過 CatchTable / NAVER 預約獨立包廂與專人代烤，肉質極致軟嫩。</p>
+            <div class="text-2xl mb-2">🥩 9/11 爸爸請客：熟成島廣安里店</div>
+            <p class="text-sm text-amber-100/90 leading-relaxed">確定選定紅遍全韓的「숙성도 熟成島 廣安里店」！熟成 960 小時黑豬肉爆汁軟嫩、專人代烤且飽覽廣安大橋夜景，可用 CatchTable 遠端候位。</p>
           </div>
           <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
             <div class="text-2xl mb-2">🚐 零負擔機場專車</div>
-            <p class="text-sm text-teal-100 leading-relaxed">去程與回程皆已預約 9 人座接送機專車，出門即上車，飯店直達機場，杜絕拖拉重型行李尋找大眾運輸的體力透支。</p>
+            <p class="text-sm text-amber-100/90 leading-relaxed">去程與回程皆已預約 9 人座接送機專車，出門即上車，飯店直達機場，杜絕拖拉重型行李尋找大眾運輸的體力透支。</p>
           </div>
           <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
             <div class="text-2xl mb-2">💳 市區從容退稅</div>
-            <p class="text-sm text-teal-100 leading-relaxed">善用飯店緊鄰「新世界百貨」的地理優勢，購物後直接於百貨 B2/3F 辦理即時退稅，節省機場現場排隊等候時間。</p>
+            <p class="text-sm text-amber-100/90 leading-relaxed">善用飯店緊鄰「新世界百貨」的地理優勢，購物後直接於百貨 B2/3F 辦理即時退稅，節省機場現場排隊等候時間。</p>
           </div>
         </div>
       </div>
@@ -174,52 +176,52 @@
 
     <!-- 模組 2: 交通與住宿樞紐 -->
     <section id="transport" class="view-section hide">
-      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80 mb-6">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">交通樞紐與住宿基地規劃</h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80 mb-6">
+        <h2 class="text-2xl font-bold text-stone-900 mb-2">交通樞紐與住宿基地規劃</h2>
+        <p class="text-stone-600 text-sm leading-relaxed">
           跨國旅遊的順暢度取決於交通接駁與住宿地點的方便性。本專案將住宿樞紐選定於 Centum City 核心區，並針對台灣高鐵段、長榮國際航班與釜山金海機場專車進行了精確的時間鎖定，確保點對點銜接萬無一失。
         </p>
       </div>
       
       <div class="space-y-6">
         <!-- 航班與高鐵資訊 -->
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80">
-          <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><span>✈️</span> 國際航班與台灣高鐵銜接備忘</h3>
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80">
+          <h3 class="text-xl font-bold text-stone-800 mb-6 flex items-center gap-2"><span>✈️</span> 國際航班與台灣高鐵銜接備忘</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 relative">
-              <span class="absolute top-4 right-4 bg-teal-700 text-white text-xs font-bold px-3 py-1 rounded-full">去程 9/8 (日)</span>
-              <h4 class="font-bold text-slate-900 text-lg mb-3">高鐵 ➔ 飛行 ➔ 接機</h4>
+            <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200/60 relative">
+              <span class="absolute top-4 right-4 bg-amber-800 text-white text-xs font-bold px-3 py-1 rounded-full">去程 9/8 (日)</span>
+              <h4 class="font-bold text-stone-900 text-lg mb-3">高鐵 ➔ 飛行 ➔ 接機</h4>
               <div class="space-y-3 text-sm">
                 <div class="flex items-start gap-2">
-                  <span class="text-teal-700 font-bold shrink-0">🚅 高鐵 624:</span>
-                  <span class="text-slate-700">10:13 台南站 發車 ➔ 11:32 抵達桃園站 (全票3張)</span>
+                  <span class="text-amber-800 font-bold shrink-0">🚅 高鐵 624:</span>
+                  <span class="text-stone-700">10:13 台南站 發車 ➔ 11:32 抵達桃園站 (全票3張)</span>
                 </div>
                 <div class="flex items-start gap-2">
-                  <span class="text-teal-700 font-bold shrink-0">🛫 長榮 BR164:</span>
-                  <span class="text-slate-700">14:35 台北桃園 (TPE T2) ➔ 18:00 抵達釜山金海 (PUS)</span>
+                  <span class="text-amber-800 font-bold shrink-0">🛫 長榮 BR164:</span>
+                  <span class="text-stone-700">14:35 台北桃園 (TPE T2) ➔ 18:00 抵達釜山金海 (PUS)</span>
                 </div>
                 <div class="flex items-start gap-2">
-                  <span class="text-teal-700 font-bold shrink-0">🚐 專車接機:</span>
-                  <span class="text-slate-700">18:00 金海機場入境大廳司機舉牌，專車直達飯店</span>
+                  <span class="text-amber-800 font-bold shrink-0">🚐 專車接機:</span>
+                  <span class="text-stone-700">18:00 金海機場入境大廳司機舉牌，專車直達飯店</span>
                 </div>
               </div>
             </div>
 
-            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 relative">
-              <span class="absolute top-4 right-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">回程 9/12 (四)</span>
-              <h4 class="font-bold text-slate-900 text-lg mb-3">送機 ➔ 飛行 ➔ 返家</h4>
+            <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200/60 relative">
+              <span class="absolute top-4 right-4 bg-orange-800 text-white text-xs font-bold px-3 py-1 rounded-full">回程 9/12 (四)</span>
+              <h4 class="font-bold text-stone-900 text-lg mb-3">送機 ➔ 飛行 ➔ 返家</h4>
               <div class="space-y-3 text-sm">
                 <div class="flex items-start gap-2">
-                  <span class="text-amber-700 font-bold shrink-0">🚐 專車送機:</span>
-                  <span class="text-slate-700">08:30 飯店大門準時上車 ➔ 09:15 抵達金海機場 2F</span>
+                  <span class="text-orange-900 font-bold shrink-0">🚐 專車送機:</span>
+                  <span class="text-stone-700">08:30 飯店大門準時上車 ➔ 09:15 抵達金海機場 2F</span>
                 </div>
                 <div class="flex items-start gap-2">
-                  <span class="text-amber-700 font-bold shrink-0">🛬 長榮 BR1193:</span>
-                  <span class="text-slate-700">11:20 釜山金海 (PUS) 起飛 ➔ 12:45 抵達台北桃園 (TPE T2)</span>
+                  <span class="text-orange-900 font-bold shrink-0">🛬 長榮 BR1193:</span>
+                  <span class="text-stone-700">11:20 釜山金海 (PUS) 起飛 ➔ 12:45 抵達台北桃園 (TPE T2)</span>
                 </div>
                 <div class="flex items-start gap-2">
-                  <span class="text-amber-700 font-bold shrink-0">💡 備註:</span>
-                  <span class="text-slate-700">預留 2 小時辦理機場現場退稅與行李託運手續</span>
+                  <span class="text-orange-900 font-bold shrink-0">💡 備註:</span>
+                  <span class="text-stone-700">預留 2 小時辦理機場現場退稅與行李託運手續</span>
                 </div>
               </div>
             </div>
@@ -227,34 +229,34 @@
         </div>
 
         <!-- 住宿樞紐卡片 -->
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80">
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80">
           <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div class="space-y-2">
               <div class="flex items-center gap-2">
                 <span class="text-2xl">🏨</span>
-                <h3 class="text-2xl font-bold text-slate-900">Centum Premier Hotel (센텀프리미어호텔)</h3>
+                <h3 class="text-2xl font-bold text-stone-900">Centum Premier Hotel (센텀프리미어호텔)</h3>
               </div>
-              <p class="text-slate-500 font-medium text-sm">地址：釜山廣域市海雲台區 Centum 1-ro 17 (센텀1로 17)</p>
-              <p class="text-slate-600 text-sm leading-relaxed max-w-3xl">
+              <p class="text-stone-500 font-medium text-sm">地址：釜山廣域市海雲台區 Centum 1-ro 17 (센텀1로 17)</p>
+              <p class="text-stone-600 text-sm leading-relaxed max-w-3xl">
                 【戰略優勢】距離地鐵 Centum City 站（205號）僅約 200 公尺。緊鄰新世界百貨（Shinsegae Centum City）與 BEXCO。周邊路面寬敞平坦，長輩在下午行程結束後可先回房休息，晚間若想逛街亦可隨時步行至百貨公司地下美食街或辦理市區退稅。
               </p>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Centum+Premier+Hotel+Busan" target="_blank" class="shrink-0 bg-slate-900 hover:bg-teal-800 text-white px-6 py-3.5 rounded-2xl text-sm font-bold transition-colors shadow-md flex items-center gap-2">
+            <a href="https://www.google.com/maps/search/?api=1&query=Centum+Premier+Hotel+Busan" target="_blank" class="shrink-0 bg-amber-900 hover:bg-amber-800 text-white px-6 py-3.5 rounded-2xl text-sm font-bold transition-colors shadow-md flex items-center gap-2">
               <span>📍</span> Google Maps 導航
             </a>
           </div>
         </div>
 
         <!-- 9人座專車說明卡 -->
-        <div class="bg-teal-50 p-6 md:p-8 rounded-3xl border border-teal-100">
-          <h3 class="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2"><span>🚐</span> 預約 9 人座包車服務細節</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-teal-800">
+        <div class="bg-amber-50/70 p-6 md:p-8 rounded-3xl border border-amber-200/70">
+          <h3 class="text-xl font-bold text-amber-950 mb-4 flex items-center gap-2"><span>🚐</span> 預約 9 人座包車服務細節</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-amber-900">
             <div class="bg-white/80 p-4 rounded-xl">
-              <strong class="block text-teal-900 font-bold mb-1">去程接機 (9/8 18:00)</strong>
+              <strong class="block text-amber-950 font-bold mb-1">去程接機 (9/8 18:00)</strong>
               班機降落出關後，司機將於 1 樓入境大廳手持姓名牌候機。直接協助將行李放置於專車後廂，點對點直達飯店，無需任何步行負擔。
             </div>
             <div class="bg-white/80 p-4 rounded-xl">
-              <strong class="block text-teal-900 font-bold mb-1">回程送機 (9/12 08:30)</strong>
+              <strong class="block text-amber-950 font-bold mb-1">回程送機 (9/12 08:30)</strong>
               專車於飯店大門等候，協助搬運伴手禮與行李箱，直接送達金海機場 2 樓出境大廳門口，時間無縫銜接辦理退稅與登機。
             </div>
           </div>
@@ -264,43 +266,43 @@
 
     <!-- 模組 3: 每日行程 -->
     <section id="timeline" class="view-section hide">
-      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80 mb-6">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">五天四夜互動時間軸行程</h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          行程依據「重力順向」與「長輩體力續航」原則進行佈局。點擊下方天數標籤可動態切換每日細部時間表。特別在 **9/11 晚餐** 配置了專屬的 **爸爸請客頂級韓牛饗宴 (Woo Tender / 초원농원 / 부산갈비 / 嶺南食肉)**，隨附 Google Maps 與 CatchTable/NAVER 預約連結。
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80 mb-6">
+        <h2 class="text-2xl font-bold text-stone-900 mb-2">五天四夜互動時間軸行程</h2>
+        <p class="text-stone-600 text-sm leading-relaxed">
+          行程依據「重力順向」與「長輩體力續航」原則進行佈局。點擊下方天數標籤可動態切換每日細部時間表。特別在 **9/11 晚餐** 確定配置了專屬的 **爸爸請客：熟成島 廣安里店 (숙성도)** 頂級黑豬肉饗宴，隨附 Google Maps 導航連結。
         </p>
       </div>
       
       <!-- 天數切換標籤 -->
       <div class="flex flex-wrap gap-2 mb-8" id="day-tabs">
         <button class="day-btn tab-active px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="1">Day 1 (9/8)</button>
-        <button class="day-btn bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="2">Day 2 (9/9)</button>
-        <button class="day-btn bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="3">Day 3 (9/10)</button>
-        <button class="day-btn bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="4">Day 4 (9/11)</button>
-        <button class="day-btn bg-white text-slate-600 border border-slate-200/80 hover:bg-slate-50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="5">Day 5 (9/12)</button>
+        <button class="day-btn bg-white text-stone-600 border border-stone-200/80 hover:bg-amber-50/50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="2">Day 2 (9/9)</button>
+        <button class="day-btn bg-white text-stone-600 border border-stone-200/80 hover:bg-amber-50/50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="3">Day 3 (9/10)</button>
+        <button class="day-btn bg-white text-stone-600 border border-stone-200/80 hover:bg-amber-50/50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="4">Day 4 (9/11)</button>
+        <button class="day-btn bg-white text-stone-600 border border-stone-200/80 hover:bg-amber-50/50 px-5 py-3 rounded-2xl font-bold text-sm transition-all shadow-sm" data-day="5">Day 5 (9/12)</button>
       </div>
 
       <!-- 時間軸動態容器 -->
-      <div class="relative border-l-4 border-teal-200/80 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8" id="timeline-container">
+      <div class="relative border-l-4 border-amber-300/80 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8" id="timeline-container">
         <!-- 由 JavaScript 動態生成 -->
       </div>
     </section>
 
     <!-- 模組 4: 長輩友善美食地圖 -->
     <section id="food" class="view-section hide">
-      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80 mb-6">
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80 mb-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 mb-1">長輩友善精選美食與咖啡地圖</h2>
-            <p class="text-slate-600 text-sm">嚴選牙口友善、易消化、環境舒適且具備專人服務（含海雲台 Woo Tender、南浦洞 초원농원/부산갈비、西面 嶺南食肉/Gohasun）、質感咖啡（Under Coffee）與在地湯品的餐廳。</p>
+            <h2 class="text-2xl font-bold text-stone-900 mb-1">長輩友善精選美食與咖啡地圖</h2>
+            <p class="text-stone-600 text-sm">嚴選牙口友善、易消化、環境舒適且具備專人服務（含 9/11 爸爸請客【熟成島 廣安里店】、Gohasun、Red Pig）、質感咖啡（Under Coffee）與在地湯品的餐廳。</p>
           </div>
           <!-- 篩選按鈕 -->
           <div class="flex flex-wrap gap-2" id="food-filters">
-            <button class="filter-btn bg-teal-800 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="all">全部餐廳</button>
-            <button class="filter-btn bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="hanwoo">🥩 頂級韓牛/燒肉</button>
-            <button class="filter-btn bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="local">🥘 在地湯品</button>
-            <button class="filter-btn bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="seafood">🦀 精緻海味</button>
-            <button class="filter-btn bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="cafe">☕ 質感咖啡/甜點</button>
+            <button class="filter-btn bg-amber-900 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="all">全部餐廳</button>
+            <button class="filter-btn bg-white text-stone-600 border border-stone-200 hover:bg-amber-50/50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="hanwoo">🥩 頂級燒肉/熟成豬肉</button>
+            <button class="filter-btn bg-white text-stone-600 border border-stone-200 hover:bg-amber-50/50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="local">🥘 在地湯品</button>
+            <button class="filter-btn bg-white text-stone-600 border border-stone-200 hover:bg-amber-50/50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="seafood">🦀 精緻海味</button>
+            <button class="filter-btn bg-white text-stone-600 border border-stone-200 hover:bg-amber-50/50 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm" data-filter="cafe">☕ 質感咖啡/甜點</button>
           </div>
         </div>
       </div>
@@ -311,24 +313,71 @@
       </div>
     </section>
 
-    <!-- 模組 5: 行前準備與退稅指南 -->
+    <!-- 模組 5: 行前準備與互動打包清單 -->
     <section id="prep" class="view-section hide">
-      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80 mb-6">
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">行前整備、賦稅返還與訂位攻略</h2>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          收錄 2024 年最新韓國退稅法規，詳解市區即時退稅與金海機場實體退稅動線，並涵蓋 CatchTable / NAVER 預約 9/11 頂級韓牛 (Woo Tender / 초원농원) 技巧、WOWPASS 儲值卡、9 月洋蔥式穿搭及高齡旅遊常備藥品防護。
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80 mb-6">
+        <h2 class="text-2xl font-bold text-stone-900 mb-2">行前整備、退稅指南與互動打包清單</h2>
+        <p class="text-stone-600 text-sm leading-relaxed">
+          整合 2024 年最新韓國退稅規定、CatchTable / NAVER 9/11 熟成島等熱門餐廳候位技巧，以及專為本次家族之旅客製的「**互動式出國行李檢查清單**」，隨時勾選即時計算打包進度。
         </p>
+      </div>
+
+      <!-- 互動式行李清單 (Packing Checklist) -->
+      <div class="bg-stone-900 text-white p-6 md:p-8 rounded-3xl shadow-lg mb-8 border border-amber-900/30">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+          <div>
+            <h3 class="text-2xl font-bold flex items-center gap-2"><span>🧳</span> 出國行李檢查清單 (Interactive Checklist)</h3>
+            <p class="text-amber-200/80 text-xs sm:text-sm mt-1">出發前整理行李時可隨時勾選，系統將自動計算準備完成度！</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="checkAllPacking(true)" class="bg-white/20 hover:bg-white/30 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-colors">全選</button>
+            <button onclick="checkAllPacking(false)" class="bg-white/10 hover:bg-white/20 text-amber-200 text-xs px-3 py-1.5 rounded-lg font-bold transition-colors">重設</button>
+          </div>
+        </div>
+
+        <!-- 完成度進度條 -->
+        <div class="bg-black/30 p-4 rounded-2xl mb-6">
+          <div class="flex justify-between text-xs font-bold mb-1">
+            <span>打包進度</span>
+            <span id="packing-progress-text">0 / 0 (0%)</span>
+          </div>
+          <div class="w-full bg-stone-950 h-3 rounded-full overflow-hidden">
+            <div id="packing-progress-bar" class="bg-amber-500 h-full transition-all duration-300 w-0"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 隨身行李卡片 -->
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
+            <h4 class="font-bold text-lg text-amber-300 mb-3 flex items-center gap-2">
+              <span>🎒</span> 隨身行李（後背包 / 隨身小包 / 隨身箱）
+            </h4>
+            <div class="space-y-2 text-sm text-stone-100" id="carryon-list">
+              <!-- Dynamic Checkboxes -->
+            </div>
+          </div>
+
+          <!-- 託運行李卡片 -->
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/10">
+            <h4 class="font-bold text-lg text-orange-300 mb-3 flex items-center gap-2">
+              <span>🧳</span> 託運行李（大行李箱）
+            </h4>
+            <div class="space-y-2 text-sm text-stone-100" id="checked-list">
+              <!-- Dynamic Checkboxes -->
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         <!-- 退稅指南 -->
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80 lg:row-span-2 space-y-6">
-          <h3 class="text-2xl font-bold text-slate-900 flex items-center gap-2"><span>💰</span> 韓國退稅教戰守則 (2024 最新)</h3>
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80 lg:row-span-2 space-y-6">
+          <h3 class="text-2xl font-bold text-stone-900 flex items-center gap-2"><span>💰</span> 韓國退稅教戰守則 (2024 最新)</h3>
           
           <div class="bg-amber-50/80 p-5 rounded-2xl border border-amber-200/80">
-            <h4 class="font-bold text-amber-900 text-base mb-2">📌 核心規定與門檻</h4>
-            <ul class="list-disc pl-5 text-sm space-y-1.5 text-amber-800">
+            <h4 class="font-bold text-amber-950 text-base mb-2">📌 核心規定與門檻</h4>
+            <ul class="list-disc pl-5 text-sm space-y-1.5 text-amber-900">
               <li><strong>最低退稅門檻：</strong>單筆消費滿 <strong>15,000 韓元</strong>即可辦理。</li>
               <li><strong>現場即時退稅額度：</strong>單筆最高 1,000,000 韓元，每趟旅程總累積上限 5,000,000 韓元。</li>
               <li><strong>退稅商品條件：</strong>必須保持全新未拆封、未使用的狀態。</li>
@@ -336,92 +385,92 @@
           </div>
 
           <div>
-            <h4 class="font-bold text-teal-800 text-lg mb-2 flex items-center gap-2"><span>🏬</span> 市區即時退稅 (首選推薦)</h4>
-            <p class="text-sm text-slate-600 leading-relaxed mb-3">
+            <h4 class="font-bold text-amber-900 text-lg mb-2 flex items-center gap-2"><span>🏬</span> 市區即時退稅 (首選推薦)</h4>
+            <p class="text-sm text-stone-600 leading-relaxed mb-3">
               住宿的 Centum Premier Hotel 緊鄰「新世界百貨 Centum City」。結帳時出示護照並索取印有 TAX FREE 的退稅單，可直接於專櫃扣除稅金，或收集後至百貨 <strong>地下 2 樓與 3 樓退稅機台/櫃檯</strong> 一次辦理，徹底免去機場大排長龍之苦。
             </p>
-            <p class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-100">
+            <p class="text-xs text-stone-500 bg-stone-50 p-3 rounded-xl border border-stone-100">
               註：市區退稅機台需掃描護照並綁定信用卡作為出境擔保，請務必妥善保管退稅單，並於機場順利過關。
             </p>
           </div>
 
-          <div class="border-t border-slate-100 pt-5">
-            <h4 class="font-bold text-teal-800 text-lg mb-3 flex items-center gap-2"><span>✈️</span> 釜山金海機場 (PUS) 現場退稅 3 步驟</h4>
-            <ol class="list-decimal pl-5 text-sm space-y-4 text-slate-700">
+          <div class="border-t border-stone-100 pt-5">
+            <h4 class="font-bold text-amber-900 text-lg mb-3 flex items-center gap-2"><span>✈️</span> 釜山金海機場 (PUS) 現場退稅 3 步驟</h4>
+            <ol class="list-decimal pl-5 text-sm space-y-4 text-stone-700">
               <li>
-                <strong class="text-slate-900 block mb-1">Step 1：報到託運前 (機場 2 樓)</strong>
+                <strong class="text-stone-900 block mb-1">Step 1：報到託運前 (機場 2 樓)</strong>
                 攜帶護照、所有退稅單據與「未託運」商品前往 2 樓出境大廳（4號門或 C 報到區附近）。於自助退稅機逐一掃描護照與退稅單條碼。
               </li>
               <li>
-                <strong class="text-slate-900 block mb-1">Step 2：海關查驗 (視金額而定)</strong>
+                <strong class="text-stone-900 block mb-1">Step 2：海關查驗 (視金額而定)</strong>
                 若退稅總額低於 75,000 韓元，機台掃描完成即可；若螢幕顯示需查驗，攜帶商品至旁邊海關櫃檯蓋章，完成後即可前往航空櫃檯託運行李。
               </li>
               <li>
-                <strong class="text-slate-900 block mb-1">Step 3：出境後領取現金 (管制區內)</strong>
+                <strong class="text-stone-900 block mb-1">Step 3：出境後領取現金 (管制區內)</strong>
                 通過安檢與證照審查出關後，前往往右走 4 號登機門方向的退稅服務櫃檯領取<strong>韓幣現金</strong>，省去二次換匯手續費。
               </li>
             </ol>
           </div>
         </div>
 
-        <!-- 餐廳訂位 4 大密技 (特別強調韓牛預約) -->
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80">
-          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"><span>🍽️</span> 韓國餐廳訂位與 9/11 韓牛預約密技</h3>
-          <ul class="space-y-4 text-sm text-slate-700">
+        <!-- 餐廳訂位 4 大密技 -->
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80">
+          <h3 class="text-xl font-bold text-stone-900 mb-4 flex items-center gap-2"><span>🍽️</span> 韓國餐廳訂位與 9/11 熟成島候位密技</h3>
+          <ul class="space-y-4 text-sm text-stone-700">
             <li class="flex items-start gap-3">
               <span class="text-xl mt-0.5">📱</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">CatchTable Global (預約 Woo Tender / Woosoo)</strong>
-                支援繁體中文，可用台灣電話 (+886) 註冊並綁定海外信用卡。建議出發前 7-14 天登入預約海雲台 **Woo Tender** 或西面 **Woosoo** 9/11 晚間席位。
+                <strong class="text-stone-900 block mb-0.5">CatchTable Global (遠端候位/預約 熟成島)</strong>
+                支援繁體中文，可用台灣電話 (+886) 註冊。9/11 晚餐建議於下午 16:30-17:00 開啟 CatchTable App 進行「熟成島 廣安里店」遠端線上抽號碼牌，大幅縮短現場等候時間！
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-xl mt-0.5">🗺️</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">NAVER Map 線上預約 (預約 초원농원 / 嶺南食肉)</strong>
-                搜尋店家（如 **초원농원** 或 **嶺南食肉食堂**）若出現綠色「예약 (預約)」按鈕，登入 NAVER 帳號即可直接選擇時間與人數預訂獨立包廂。
+                <strong class="text-stone-900 block mb-0.5">NAVER Map 線上預約</strong>
+                搜尋店家若出現綠色「예약 (預約)」按鈕，登入 NAVER 帳號即可直接選擇時間與人數預訂獨立包廂。
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-xl mt-0.5">🛎️</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">飯店櫃檯代訂 (最省心備案)</strong>
-                辦理入住時出示餐廳韓文名稱（如 南浦洞 **부산갈비**），請 Centum Premier 飯店櫃檯人員協助致電確認 9/11 當晚包廂位置或代訂。
+                <strong class="text-stone-900 block mb-0.5">飯店櫃檯代訂 (最省心備案)</strong>
+                辦理入住時出示餐廳韓文名稱（如 **숙성도 광안리점**），請 Centum Premier 飯店櫃檯人員協助致電確認當晚位置或諮詢排隊狀況。
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="text-xl mt-0.5">📟</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">現場平板登記候位</strong>
-                若無預約直接到店，門口通常有候位平板，切換至 Global 語言輸入 Email 或電話即可領取號碼牌。
+                <strong class="text-stone-900 block mb-0.5">現場平板登記候位</strong>
+                若無預約直接到店，門口有 CatchTable 候位平板，切換至 Global 語言輸入 Email 或電話即可領取號碼牌，隨後可在廣安里海灘漫步等候通知。
               </div>
             </li>
           </ul>
         </div>
 
         <!-- 數位工具與高齡照護 -->
-        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-200/80 space-y-6">
-          <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2"><span>🧥</span> 氣候穿搭、數位工具與長輩防護</h3>
+        <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-stone-200/80 space-y-6">
+          <h3 class="text-xl font-bold text-stone-900 flex items-center gap-2"><span>🧥</span> 氣候穿搭、數位工具與長輩防護</h3>
           
-          <div class="space-y-4 text-sm text-slate-700">
+          <div class="space-y-4 text-sm text-stone-700">
             <div class="flex items-start gap-3">
               <span class="text-xl">💳</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">WOWPASS 外國人專屬神卡</strong>
+                <strong class="text-stone-900 block mb-0.5">WOWPASS 外國人專屬神卡</strong>
                 結合簽帳卡與 T-money 功能，可於地鐵站直接用台幣現鈔儲值，減少長輩攜帶大量現金找零的負擔。
               </div>
             </div>
             <div class="flex items-start gap-3">
               <span class="text-xl">🌡️</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">9月氣候與洋蔥式穿搭</strong>
-                釜山初秋日夜溫差大。建議內層穿透氣短袖，外搭防風薄外套。海雲台與影島海風強勁，務必隨身攜帶輕薄圍巾保暖。
+                <strong class="text-stone-900 block mb-0.5">9月氣候與洋蔥式穿搭</strong>
+                釜山初秋日夜溫差大。建議內層穿透氣短袖，外搭防風薄外套。海雲台與廣安里海風強勁，務必隨身攜帶輕薄圍巾保暖。
               </div>
             </div>
             <div class="flex items-start gap-3">
               <span class="text-xl">💊</span>
               <div>
-                <strong class="text-slate-900 block mb-0.5">常備用藥與防滑健走鞋</strong>
+                <strong class="text-stone-900 block mb-0.5">常備用藥與防滑健走鞋</strong>
                 備妥腸胃藥、感冒藥與長輩慢性病處方箋。因地形起伏，長輩務必穿著支撐力良好之防滑健走鞋以保護膝關節。
               </div>
             </div>
@@ -456,18 +505,18 @@
         if(btn.dataset.target === targetId) {
           if(btn.classList.contains('nav-btn')){
             btn.classList.add('nav-active');
-            btn.classList.remove('text-slate-500');
+            btn.classList.remove('text-stone-500');
           } else {
-            btn.classList.add('border-teal-600', 'text-teal-800', 'bg-teal-50');
-            btn.classList.remove('border-transparent', 'text-slate-600');
+            btn.classList.add('border-amber-800', 'text-amber-950', 'bg-amber-50');
+            btn.classList.remove('border-transparent', 'text-stone-600');
           }
         } else {
           if(btn.classList.contains('nav-btn')){
             btn.classList.remove('nav-active');
-            btn.classList.add('text-slate-500');
+            btn.classList.add('text-stone-500');
           } else {
-            btn.classList.remove('border-teal-600', 'text-teal-800', 'bg-teal-50');
-            btn.classList.add('border-transparent', 'text-slate-600');
+            btn.classList.remove('border-amber-800', 'text-amber-950', 'bg-amber-50');
+            btn.classList.add('border-transparent', 'text-stone-600');
           }
         }
       });
@@ -486,7 +535,7 @@
       });
     });
 
-    // --- 圖表邏輯 (Chart.js) ---
+    // --- 圖表邏輯 (Chart.js 秋季暖色繪製) ---
     function renderCharts() {
       // 1. 預算分配圖
       const ctxBudget = document.getElementById('budgetChart');
@@ -494,10 +543,10 @@
         new Chart(ctxBudget.getContext('2d'), {
           type: 'doughnut',
           data: {
-            labels: ['住宿 (8,000 NTD)', '在地交通/專車 (4,000 NTD)', '頂級餐飲/韓牛 (12,000 NTD)', '門票與購物 (4,000 NTD)', '預備金 (2,000 NTD)'],
+            labels: ['住宿 (8,000 NTD)', '在地交通/專車 (4,000 NTD)', '頂級餐飲/熟成黑豬肉 (12,000 NTD)', '門票與購物 (4,000 NTD)', '預備金 (2,000 NTD)'],
             datasets: [{
               data: [8000, 4000, 12000, 4000, 2000],
-              backgroundColor: ['#0f766e', '#0ea5e9', '#b91c1c', '#ec4899', '#94a3b8'],
+              backgroundColor: ['#92400e', '#ea580c', '#991b1b', '#d97706', '#78350f'],
               borderWidth: 0,
               hoverOffset: 6
             }]
@@ -527,13 +576,13 @@
               {
                 label: '專車/計程車點對點 (分鐘)',
                 data: [45, 35, 8],
-                backgroundColor: '#0f766e',
+                backgroundColor: '#92400e',
                 borderRadius: 6
               },
               {
                 label: '大眾運輸含步行轉乘 (分鐘)',
                 data: [85, 75, 25],
-                backgroundColor: '#cbd5e1',
+                backgroundColor: '#d6d3d1',
                 borderRadius: 6
               }
             ]
@@ -542,7 +591,7 @@
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-              y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '時間 (分鐘)' } },
+              y: { beginAtZero: true, grid: { color: '#f5f0eb' }, title: { display: true, text: '時間 (分鐘)' } },
               x: { grid: { display: false } }
             },
             plugins: {
@@ -582,7 +631,7 @@
         { time: "13:30", title: "釜山塔 / 龍頭山公園散策", duration: "1 小時", desc: "善用光復路商圈的免費戶外電扶梯輕鬆上山，俯瞰釜山港口與市區壯麗景致。", type: "spot", link: "https://www.google.com/maps/search/?api=1&query=Yongdusan+Park+Busan" },
         { time: "14:30", title: "The North Face 光復店採買退稅", duration: "1.5 小時", desc: "造訪 The North Face 旗艦店 (光復路 95-1) 選購機能服飾，現場辦理退稅手續。", type: "shop", link: "https://share.google/wkh6jwI7wdcxS8cvr" },
         { time: "16:00", title: "Good Ol' Days 咖啡廳 (寄給未來的明信片)", duration: "1 小時", desc: "南浦文青咖啡廳，長輩可在此品飲咖啡並書寫明信片，由店家於未來指定日期寄出。", type: "cafe", link: "https://maps.app.goo.gl/kuaARGjY1FQ6sUuU6" },
-        { time: "18:00", title: "👑 爸爸請客晚宴：頂級 1++ 韓牛 (跨區首選動線)", duration: "2 小時", desc: "【專屬尊榮企劃】可依當天動線選擇：<br>1️⃣ **南浦洞就近 (推薦不拉車)**：<b>초원농원 Chowon Nongwon</b> (氣派包廂/代烤) 或 <b>부산갈비 Busan Galbi</b> (50年老字號)。<br>2️⃣ **西面順路**：<b>영남식육식당 嶺南食肉(釜田店)</b> 或 <b>우수 Woosoo</b>。<br>3️⃣ **海雲台專程**：<b>Woo Tender</b> (清潭洞頂級 1++ 韓牛，可 CatchTable 預約)。", type: "food", link: "https://www.google.com/maps/search/?api=1&query=Chowon+Nongwon+Busan" }
+        { time: "18:00", title: "👑 爸爸請客晚宴：熟成島 廣安里店 (숙성도)", duration: "2 小時", desc: "【爸爸請客確定餐廳】濟州島起家、紅爆全韓的頂級熟成黑豬肉名店「熟成島 廣安里店 (숙성도)」！嚴選熟成 960 小時厚切黑豬肉，肉質爆汁軟嫩、專人桌邊代烤，牙口友善，還能遠眺廣安大橋夜景！可透過 CatchTable App 提前遠端抽號候位。", type: "food", link: "https://www.google.com/maps/search/?api=1&query=%EC%80%A9%EC%84%B1%EB%8F%84+%EA%B4%91%EC%95%88%EB%A6%AC%EC%A0%90+Busan" }
       ],
       5: [
         { time: "08:30", title: "專車送機至金海國際機場", duration: "45 分鐘", desc: "預約 9 人座專車於飯店大門等候，協助載運行李直達金海機場 2 樓出境大廳。", type: "car", link: "" },
@@ -602,19 +651,19 @@
       data.forEach(item => {
         const itemHtml = `
           <div class="relative group">
-            <div class="absolute -left-[43px] sm:-left-[51px] bg-teal-800 text-white rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-base sm:text-lg shadow-md ring-4 ring-slate-50">
+            <div class="absolute -left-[43px] sm:-left-[51px] bg-amber-900 text-white rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-base sm:text-lg shadow-md ring-4 ring-[#faf8f5]">
               ${emojiMap[item.type] || '📍'}
             </div>
-            <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:border-teal-300 transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-stone-200/80 hover:border-amber-400 transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div class="flex-1">
                 <div class="flex items-center gap-2 mb-1.5">
-                  <span class="font-black text-teal-800 text-lg sm:text-xl tracking-tight">${item.time}</span>
-                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-bold">${item.duration}</span>
+                  <span class="font-black text-amber-950 text-lg sm:text-xl tracking-tight">${item.time}</span>
+                  <span class="text-xs bg-stone-100 text-stone-600 px-2 py-0.5 rounded font-bold">${item.duration}</span>
                 </div>
-                <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1">${item.title}</h4>
-                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">${item.desc}</p>
+                <h4 class="text-base sm:text-lg font-bold text-stone-900 mb-1">${item.title}</h4>
+                <p class="text-stone-600 text-xs sm:text-sm leading-relaxed">${item.desc}</p>
               </div>
-              ${item.link ? `<a href="${item.link}" target="_blank" class="shrink-0 bg-slate-900 hover:bg-teal-800 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors shadow-sm flex items-center gap-1.5"><span>📍</span> Maps / 預約</a>` : ''}
+              ${item.link ? `<a href="${item.link}" target="_blank" class="shrink-0 bg-stone-900 hover:bg-amber-900 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-colors shadow-sm flex items-center gap-1.5"><span>📍</span> Maps / 導航</a>` : ''}
             </div>
           </div>
         `;
@@ -627,23 +676,21 @@
       btn.addEventListener('click', (e) => {
         dayBtns.forEach(b => {
           b.classList.remove('tab-active');
-          b.classList.add('bg-white', 'text-slate-600');
+          b.classList.add('bg-white', 'text-stone-600');
         });
         e.currentTarget.classList.add('tab-active');
-        e.currentTarget.classList.remove('bg-white', 'text-slate-600');
+        e.currentTarget.classList.remove('bg-white', 'text-stone-600');
         renderTimeline(e.currentTarget.dataset.day);
       });
     });
 
     // --- 美食地圖資料與過濾繪製 ---
     const restaurants = [
-      { name: 'Woo Tender (우텐더 해운대)', type: 'hanwoo', tags: ['👑 海雲台首選', '1++頂級韓牛', '專人桌邊服務', 'CatchTable預約'], desc: '清潭洞頂級韓牛海雲台旗艦店。嚴選最高等級 1++ 熟成韓牛菲力，提供極致軟嫩口感與包廂，最適合爸爸請客。', gmap: 'https://www.google.com/maps/search/?api=1&query=Woo+Tender+Haeundae', naver: '#' },
-      { name: 'Chowon Nongwon (초원농원 南浦/草梁)', type: 'hanwoo', tags: ['👑 南浦洞首選', '獨立包廂', '長輩滿意度最高', 'NAVER預約'], desc: '釜山極具代表性的大型獨棟高級韓牛殿堂，提供獨立包廂與專人代烤，肉質軟嫩，隨餐附贈豐盛小菜與溫補湯品。', gmap: 'https://www.google.com/maps/search/?api=1&query=Chowon+Nongwon+Busan', naver: '#' },
+      { name: '숙성도 熟成島 (廣安里店)', type: 'hanwoo', tags: ['👑 9/11爸爸請客首選', '熟成960小時黑豬肉', '廣安大橋夜景', '專人桌邊代烤'], desc: '濟州島發跡、全韓超人氣熟成黑豬肉名店！嚴選 960 小時熟成厚切豬肉（骨肋排/骨三層肉），爆汁軟嫩、專人代烤且牙口友善，邊吃邊看廣安大橋夜景！', gmap: 'https://www.google.com/maps/search/?api=1&query=%EC%80%A9%EC%84%B1%EB%8F%84+%EA%B4%91%EC%95%88%EB%A6%AC%EC%A0%90+Busan', naver: 'https://mamahuhu.blog/overseas/sukseongdo-gwangalli/' },
+      { name: 'Woo Tender (우텐더 해운대)', type: 'hanwoo', tags: ['海雲台首選', '1++頂級韓牛', '專人桌邊服務', 'CatchTable預約'], desc: '清潭洞頂級韓牛海雲台旗艦店。嚴選最高等級 1++ 熟成韓牛菲力，提供極致軟嫩口感與包廂。', gmap: 'https://www.google.com/maps/search/?api=1&query=Woo+Tender+Haeundae', naver: '#' },
+      { name: 'Chowon Nongwon (초원농원 南浦/草梁)', type: 'hanwoo', tags: ['南浦洞備選', '獨立包廂', '長輩滿意度高', 'NAVER預約'], desc: '釜山極具代表性的大型獨棟高級韓牛殿堂，提供獨立包廂與專人代烤，肉質軟嫩，隨餐附贈豐盛小菜與溫補湯品。', gmap: 'https://www.google.com/maps/search/?api=1&query=Chowon+Nongwon+Busan', naver: '#' },
       { name: 'Busan Galbi (부산갈비 南浦洞)', type: 'hanwoo', tags: ['50年老字號', '醬燒韓牛排骨', '光復路商圈'], desc: '南浦洞商圈核心 50 年老字號高級韓牛名店，主打炭火秘製醬燒韓牛排骨與鮮切 1++ 韓牛，離 The North Face 步行 5 分鐘。', gmap: 'https://www.google.com/maps/search/?api=1&query=Busan+Galbi+Nampo', naver: '#' },
-      { name: '嶺南食肉食堂 (영남식육식당)', type: 'hanwoo', tags: ['老字號高級韓牛', '獨立包廂', '海雲台/西面釜田店'], desc: '釜山老字號頂級韓牛專賣店，優質 1++ 母牛排骨與炭火烘烤，隨餐附贈溫熱血湯與高級韓式小菜，長輩極度滿意。', gmap: 'https://www.google.com/maps/search/?api=1&query=Yeongnam+Sikyuk+Sikdang+Busan', naver: '#' },
-      { name: 'Woosoo Hanwoo (우수 西面/田浦)', type: 'hanwoo', tags: ['西面高級韓牛', '1++極致菲力', 'CatchTable預約'], desc: '西面田浦商圈現代質感高級韓牛燒肉，主打單品 1++ 最高等級韓牛菲力與薄切牛舌，氣氛安靜高雅。', gmap: 'https://www.google.com/maps/search/?api=1&query=Woosoo+Hanwoo+Seomyeon', naver: '#' },
-      { name: 'Eonyang Bulgogi Busan-jib (언양불고기)', type: 'hanwoo', tags: ['廣安里名店', '高級韓牛醬燒', '無敵景觀'], desc: '廣安里地標級獨棟韓牛名店，嚴選高品質韓牛烤肉與特製醬汁，用餐環境氣派尊榮。', gmap: 'https://www.google.com/maps/search/?api=1&query=Eonyang+Bulgogi+Busan-jib+Gwangalli', naver: '#' },
-      { name: 'Gohasun (고하순)', type: 'hanwoo', tags: ['頂級豬肉燒肉', '專人代烤', '西面/田浦'], desc: '西面超人氣頂級燒肉，肉質熟成軟嫩，全程由專人桌邊代烤，長輩只需優雅享用。', gmap: 'https://www.google.com/maps/search/?api=1&query=Gohasun+Busan', naver: 'https://naver.me/GYDNAyPi' },
+      { name: 'Gohasun (고하순)', type: 'hanwoo', tags: ['頂級豬肉燒肉', '專人代烤', '西面/田浦'], desc: '西面超人氣頂級燒肉，肉質熟成軟嫩，全程由專人桌邊代烤，長輩無需自行翻烤。', gmap: 'https://www.google.com/maps/search/?api=1&query=Gohasun+Busan', naver: 'https://naver.me/GYDNAyPi' },
       { name: 'Red Pig Sammaegyeong (빨간돼지삼매경)', type: 'hanwoo', tags: ['韓式燒肉', '質感小菜', '廣安里/南浦'], desc: '嚴選厚切豬肉與極致豐富的韓式小菜，肉質細嫩易咀嚼，氛圍舒適極適合家族聚餐。', gmap: 'https://www.google.com/maps/search/?api=1&query=Red+Pig+Sammaegyeong+Busan', naver: 'https://naver.me/GzdxpI6L' },
       { name: 'Under Coffee (언더커피)', type: 'cafe', tags: ['質感咖啡', '精緻甜點', '海雲台歇腳'], desc: '裝潢簡約採光絕佳的特調精品咖啡廳，提供香醇咖啡與美味甜點，是行程中陪伴長輩放鬆休息的絕佳去處。', gmap: 'https://maps.app.goo.gl/NW3uDrRch8hhhWhf9', naver: '#' },
       { name: '南浦蔘雞湯 (남포삼계탕)', type: 'local', tags: ['在地溫補', '50年老店', '南浦洞'], desc: '50年傳統名店，雞湯濃郁滋補且雞肉燉至骨肉分離，對長輩胃腸與牙口極度友善。', gmap: 'https://www.google.com/maps/search/?api=1&query=Nampo+Samgyetang', naver: '#' },
@@ -662,15 +709,15 @@
       const filtered = filterType === 'all' ? restaurants : restaurants.filter(r => r.type === filterType);
       
       filtered.forEach(r => {
-        const tagsHtml = r.tags.map(t => `<span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded text-xs font-bold">${t}</span>`).join('');
+        const tagsHtml = r.tags.map(t => `<span class="bg-amber-100/60 text-amber-900 px-2 py-0.5 rounded text-xs font-bold">${t}</span>`).join('');
         const card = `
-          <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200/80 hover:border-teal-300 transition-all flex flex-col h-full">
-            <h4 class="text-xl font-bold text-slate-900 mb-2">${r.name}</h4>
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200/80 hover:border-amber-400 transition-all flex flex-col h-full">
+            <h4 class="text-xl font-bold text-stone-900 mb-2">${r.name}</h4>
             <div class="flex flex-wrap gap-1.5 mb-3">${tagsHtml}</div>
-            <p class="text-slate-600 text-xs sm:text-sm mb-6 flex-grow leading-relaxed">${r.desc}</p>
+            <p class="text-stone-600 text-xs sm:text-sm mb-6 flex-grow leading-relaxed">${r.desc}</p>
             <div class="flex gap-2 mt-auto">
-              <a href="${r.gmap}" target="_blank" class="flex-1 text-center bg-slate-900 hover:bg-teal-800 text-white py-2 rounded-xl text-xs font-bold transition-colors shadow-sm">📍 Google Maps</a>
-              ${r.naver !== '#' ? `<a href="${r.naver}" target="_blank" class="flex-1 text-center bg-emerald-50 hover:bg-emerald-100 text-emerald-800 py-2 rounded-xl text-xs font-bold transition-colors border border-emerald-200">📗 NAVER Map</a>` : ''}
+              <a href="${r.gmap}" target="_blank" class="flex-1 text-center bg-stone-900 hover:bg-amber-900 text-white py-2 rounded-xl text-xs font-bold transition-colors shadow-sm">📍 Google Maps</a>
+              ${r.naver !== '#' ? `<a href="${r.naver}" target="_blank" class="flex-1 text-center bg-amber-50 hover:bg-amber-100 text-amber-900 py-2 rounded-xl text-xs font-bold transition-colors border border-amber-200">🔗 食記/連結</a>` : ''}
             </div>
           </div>
         `;
@@ -682,14 +729,92 @@
     filterBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         filterBtns.forEach(b => {
-          b.classList.remove('bg-teal-800', 'text-white');
-          b.classList.add('bg-white', 'text-slate-600');
+          b.classList.remove('bg-amber-900', 'text-white');
+          b.classList.add('bg-white', 'text-stone-600');
         });
-        e.currentTarget.classList.add('bg-teal-800', 'text-white');
-        e.currentTarget.classList.remove('bg-white', 'text-slate-600');
+        e.currentTarget.classList.add('bg-amber-900', 'text-white');
+        e.currentTarget.classList.remove('bg-white', 'text-stone-600');
         renderFoodGrid(e.currentTarget.dataset.filter);
       });
     });
+
+    // --- 最新精準互動打包清單 Logic ---
+    const carryOnData = [
+      "護照",
+      "錢包（信用卡、韓元、台幣）",
+      "機票",
+      "飯店確認信",
+      "藥品（個人藥物、眼藥水、酸痛貼布，用透明袋裝）",
+      "墨鏡",
+      "行李綁帶",
+      "布鞋（穿在腳上）",
+      "耳機",
+      "iPad",
+      "筆電",
+      "行動電源、充電線、萬國插頭",
+      "頸枕"
+    ];
+
+    const checkedData = [
+      "化妝包",
+      "盥洗用品",
+      "包鞋",
+      "涼鞋",
+      "外套（偏正式的小外套 ＆ 防曬外套）",
+      "衣服 5 件",
+      "褲子 ＆ 裙子 5 件",
+      "洋裝（要有正式的）4 件",
+      "垃圾袋（裝髒衣服）",
+      "壓縮行李袋",
+      "折疊衣架",
+      "髮飾、梳子",
+      "保養品（帶能拋棄的包裝的）",
+      "牙刷牙膏",
+      "拋棄式毛浴巾",
+      "吹風機",
+      "室內拖鞋"
+    ];
+
+    function renderPackingChecklist() {
+      const carryonContainer = document.getElementById('carryon-list');
+      const checkedContainer = document.getElementById('checked-list');
+      if(!carryonContainer || !checkedContainer) return;
+
+      carryonContainer.innerHTML = carryOnData.map((item, idx) => `
+        <label class="checklist-item flex items-center gap-2 cursor-pointer hover:bg-white/5 p-1 rounded transition-colors">
+          <input type="checkbox" class="packing-cb rounded text-amber-600 focus:ring-0 cursor-pointer w-4 h-4" id="co-${idx}" onchange="updatePackingProgress()">
+          <span class="text-xs sm:text-sm">${item}</span>
+        </label>
+      `).join('');
+
+      checkedContainer.innerHTML = checkedData.map((item, idx) => `
+        <label class="checklist-item flex items-center gap-2 cursor-pointer hover:bg-white/5 p-1 rounded transition-colors">
+          <input type="checkbox" class="packing-cb rounded text-orange-500 focus:ring-0 cursor-pointer w-4 h-4" id="ch-${idx}" onchange="updatePackingProgress()">
+          <span class="text-xs sm:text-sm">${item}</span>
+        </label>
+      `).join('');
+
+      updatePackingProgress();
+    }
+
+    function updatePackingProgress() {
+      const allBoxes = document.querySelectorAll('.packing-cb');
+      const checkedBoxes = document.querySelectorAll('.packing-cb:checked');
+      const total = allBoxes.length;
+      const count = checkedBoxes.length;
+      const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+
+      const textElem = document.getElementById('packing-progress-text');
+      const barElem = document.getElementById('packing-progress-bar');
+      if(textElem) textElem.innerText = `${count} / ${total} (${pct}%)`;
+      if(barElem) barElem.style.width = `${pct}%`;
+    }
+
+    function checkAllPacking(status) {
+      const allBoxes = document.querySelectorAll('.packing-cb');
+      allBoxes.forEach(cb => cb.checked = status);
+      updatePackingProgress();
+    }
 
     // 初始化載入
     window.onload = () => {
@@ -697,6 +822,7 @@
       window.chartsRendered = true;
       renderTimeline(1);
       renderFoodGrid('all');
+      renderPackingChecklist();
     };
   </script>
 </body>
